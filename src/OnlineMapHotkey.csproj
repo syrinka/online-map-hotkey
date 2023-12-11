@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>none</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ProjectGuid>{0444E06D-0C7C-4DEE-AE82-07E07ED95789}</ProjectGuid>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
+    <TargetFrameworkProfile />
+    <PublishUrl>publish\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>0</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup>
+    <OutputType>Library</OutputType>
+  </PropertyGroup>
+  <PropertyGroup>
+    <StartupObject />
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="Assembly-CSharp">
+      <HintPath>G:\SteamLibrary\steamapps\common\Rain World\RainWorld_Data\Managed\Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="BepInEx">
+      <HintPath>G:\SteamLibrary\steamapps\common\Rain World\BepInEx\core\BepInEx.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="com.rlabrecque.steamworks.net">
+      <HintPath>G:\SteamLibrary\steamapps\common\Rain World\RainWorld_Data\Managed\com.rlabrecque.steamworks.net.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="HOOKS-Assembly-CSharp">
+      <HintPath>G:\SteamLibrary\steamapps\common\Rain World\BepInEx\plugins\HOOKS-Assembly-CSharp.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="UnityEngine">
+      <HintPath>G:\SteamLibrary\steamapps\common\Rain World\RainWorld_Data\Managed\UnityEngine.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="UnityEngine.CoreModule">
+      <HintPath>G:\SteamLibrary\steamapps\common\Rain World\RainWorld_Data\Managed\UnityEngine.CoreModule.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+    <Reference Include="ImprovedInput">
+      <HintPath>..\lib\ImprovedInput.dll</HintPath>
+      <Private>False</Private>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Plugin.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="Exists('$(RainWorldDir)')">
+    <Copy SourceFiles="@(Assets)" DestinationFiles="$(RainWorldDir)/RainWorld_Data/StreamingAssets/mods/$(ProjectName)/%(RecursiveDir)%(Filename)%(Extension)" />
+    <Copy SourceFiles="$(TargetPath)" DestinationFolder="$(RainWorldDir)/RainWorld_Data/StreamingAssets/mods/$(ProjectName)/plugins" />
+  </Target>
+  <PropertyGroup>
+    <PostBuildEvent>task build</PostBuildEvent>
+  </PropertyGroup>
+</Project>

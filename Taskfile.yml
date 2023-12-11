@@ -7,5 +7,5 @@ tasks:
   build:
   - mkdir -p "$TARGET_PATH"
   - mkdir -p "$TARGET_PATH/plugins"
-  - cp assets/* "$TARGET_PATH"
-  - cp -u src/bin/Release/OnlineMapHotkey.dll "$TARGET_PATH/plugins"
+  - cp -f assets/* "$TARGET_PATH"
+  - cp -f src/bin/Release/OnlineMapHotkey.dll "$TARGET_PATH/plugins"

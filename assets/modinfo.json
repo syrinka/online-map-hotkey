@@ -6,5 +6,6 @@
     "description": "Add a hotkey to open the online rain world map, powered by https://rain-world-map.github.io/",
     "requirements": [ "improved-input-config" ],
     "requirements_names": [ "Improved Input Config" ],
+    "tags": [ "Accessibility", "Tools" ],
     "checksum_override_version": false
 }

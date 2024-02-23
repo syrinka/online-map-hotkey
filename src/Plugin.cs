@@ -17,7 +17,7 @@ namespace OnlineMapHotkey
     [BepInPlugin("cedaro.online-map-hotkey", "Online Map Hotkey", "1.0")]
     public class Plugin : BaseUnityPlugin
     {
-        protected static string BaseURL = "https://rain-world-map.github.io/map.html";
+        protected static string BaseURL = "https://noblecat57.github.io/map.html";
 
         public static Dictionary<string, string> ModdedSlugcats = new Dictionary<string, string>
         {

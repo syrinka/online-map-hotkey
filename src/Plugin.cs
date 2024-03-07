@@ -19,6 +19,8 @@ namespace OnlineMapHotkey
     {
         protected static string BaseURL = "https://noblecat57.github.io/map.html";
 
+        protected static bool pressed = false;
+
         public static Dictionary<string, string> ModdedSlugcats = new Dictionary<string, string>
         {
             {"the_similar", "yellow"},
@@ -52,13 +54,24 @@ namespace OnlineMapHotkey
 
         public static void Player_CheckInput(On.Player.orig_checkInput orig, Player self)
         {
-            if (self.IsKeyBound(Hotkey.Trigger) && Hotkey.Trigger.CheckRawPressed(self.playerState.playerNumber) && self.room.game.IsStorySession)
+            if (self.room.game.IsStorySession && self.IsKeyBound(Hotkey.Trigger))
             {
-                string url = BaseURL
-                    + "?slugcat=" + GetWorldState(self)
-                    + "&region=" + self.room.world.region.name
-                    + "&room=" + self.room.roomSettings.name;
-                SteamFriends.ActivateGameOverlayToWebPage(url);
+                if (Hotkey.Trigger.CheckRawPressed(self.playerState.playerNumber))
+                {
+                    pressed = true;
+                }
+                else
+                {
+                    if (pressed) // trigger on key release
+                    {
+                        string url = BaseURL
+                            + "?slugcat=" + GetWorldState(self)
+                            + "&region=" + self.room.world.region.name
+                            + "&room=" + self.room.roomSettings.name;
+                        SteamFriends.ActivateGameOverlayToWebPage(url);
+                    }
+                    pressed = false;
+                }
             }
             orig(self);
         }

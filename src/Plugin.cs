@@ -14,7 +14,7 @@ namespace OnlineMapHotkey
         public static PlayerKeybind Trigger;
     }
 
-    [BepInPlugin("cedaro.online-map-hotkey", "Online Map Hotkey", "1.0")]
+    [BepInPlugin("cedaro.online-map-hotkey", "Online Map Hotkey", "1.1")]
     public class Plugin : BaseUnityPlugin
     {
         protected static string BaseURL = "https://noblecat57.github.io/map.html";

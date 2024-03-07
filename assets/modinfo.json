@@ -1,9 +1,9 @@
 {
     "id": "online-map-hotkey",
     "name": "Online Map Hotkey",
-    "version": "1.0",
+    "version": "1.1",
     "authors": "Cedaro",
-    "description": "Add a hotkey to open the online rain world map, powered by https://rain-world-map.github.io/",
+    "description": "Add a hotkey to open the online rain world map, powered by https://noblecat57.github.io/",
     "requirements": [ "improved-input-config" ],
     "requirements_names": [ "Improved Input Config" ],
     "tags": [ "Accessibility", "Tools" ],
